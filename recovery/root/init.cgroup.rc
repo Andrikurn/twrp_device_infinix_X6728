@@ -1,0 +1,42 @@
+on init
+    wait /dev/cpuset/tasks
+
+    # Create subgroups
+    mkdir /dev/cpuset/foreground
+    mkdir /dev/cpuset/background
+    mkdir /dev/cpuset/system-background
+    mkdir /dev/cpuset/top-app
+    mkdir /dev/cpuset/restricted
+
+    # Assign resources
+    write /dev/cpuset/foreground/cpus 0-7
+    write /dev/cpuset/foreground/mems 0
+    write /dev/cpuset/background/cpus 0-7
+    write /dev/cpuset/background/mems 0
+    write /dev/cpuset/system-background/cpus 0-7
+    write /dev/cpuset/system-background/mems 0
+    write /dev/cpuset/top-app/cpus 0-7
+    write /dev/cpuset/top-app/mems 0
+    write /dev/cpuset/restricted/cpus 0-7
+    write /dev/cpuset/restricted/mems 0
+
+    # Set ownership and permissions
+    chown system system /dev/cpuset
+    chown system system /dev/cpuset/tasks
+    chown system system /dev/cpuset/foreground
+    chown system system /dev/cpuset/foreground/tasks
+    chown system system /dev/cpuset/background
+    chown system system /dev/cpuset/background/tasks
+    chown system system /dev/cpuset/system-background
+    chown system system /dev/cpuset/system-background/tasks
+    chown system system /dev/cpuset/top-app
+    chown system system /dev/cpuset/top-app/tasks
+    chown system system /dev/cpuset/restricted
+    chown system system /dev/cpuset/restricted/tasks
+
+    chmod 0664 /dev/cpuset/tasks
+    chmod 0664 /dev/cpuset/foreground/tasks
+    chmod 0664 /dev/cpuset/background/tasks
+    chmod 0664 /dev/cpuset/system-background/tasks
+    chmod 0664 /dev/cpuset/top-app/tasks
+    chmod 0664 /dev/cpuset/restricted/tasks
