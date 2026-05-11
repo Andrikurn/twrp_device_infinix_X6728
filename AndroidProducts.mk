@@ -5,9 +5,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/pb_X6728.mk
-
-COMMON_LUNCH_CHOICES := \
-    pb_X6728-eng \
-    pb_X6728-userdebug \
-    pb_X6728-user
+    $(LOCAL_DIR)/twrp_X6728.mk

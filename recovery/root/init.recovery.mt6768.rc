@@ -5,8 +5,6 @@ on init
 	setprop sys.usb.controller "musb-hdrc"
     setprop sys.usb.ffs.aio_compat 1
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
-	symlink /system/etc/cgroups.json /etc/cgroups.json
-	symlink /system/etc/task_profiles.json /etc/task_profiles.json
 	symlink /system/etc/recovery.fstab /etc/recovery.fstab
 	start boot-hal-1-2
 	
