@@ -25,16 +25,6 @@ tr_theme			/tr_theme		auto		ro																	wait,slotselect,logical,nofail
 /dev/block/by-name/metadata	/metadata		f2fs		noatime,nosuid,nodev,discard														wait,check,formattable
 # /dev/block/by-name/userdata	/data			f2fs		noatime,nosuid,nodev,discard,noflush_merge,fsync_mode=nobarrier,reserve_root=134217,resgid=1065,inlinecrypt				wait,check,formattable,fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized,keydirectory=/metadata/vold/metadata_encryption,sysfs_path=/sys/devices/platform/11230000.mmc
 
-# Persistent Partition
-/dev/block/by-name/protect1 /protect_f ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
-/dev/block/by-name/protect2 /protect_s ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
-/dev/block/by-name/nvdata /nvdata ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
-/dev/block/by-name/nvcfg /nvcfg ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
-/dev/block/by-name/persist /persist_image ext4 noatime,nosuid,nodev,noauto_da_alloc,commit=1,nodelalloc wait,check,formattable
-/dev/block/by-name/nvram /nvram emmc defaults defaults
-/dev/block/by-name/proinfo /proinfo emmc defaults defaults
-/dev/block/by-name/frp /persistent emmc defaults defaults
-
 # Need to have this entry in here even though the mount point itself is no longer needed.
 # The update_engine code looks for this entry in order to determine the boot device address
 # and fails if it does not find it.
@@ -42,24 +32,3 @@ tr_theme			/tr_theme		auto		ro																	wait,slotselect,logical,nofail
 
 # Use tranfs as cache
 /dev/block/by-name/tranfs	/cache			ext4		noatime,nosuid,nodev,discard														wait,check,formattable
-
-# Stock fstab stuff
-/dev/block/by-name/lk_a /bootloader emmc defaults defaults
-/dev/block/by-name/lk_b /bootloader2 emmc defaults defaults
-/dev/block/by-name/para /para emmc defaults defaults
-/dev/block/by-name/vendor_boot /vendor_boot emmc defaults defaults
-/dev/block/by-name/init_boot /init_boot emmc defaults defaults
-
-/dev/block/by-name/boot /boot emmc defaults first_stage_mount,nofail,slotselect
-
-/dev/block/by-name/vbmeta_vendor /vbmeta_vendor emmc defaults first_stage_mount,nofail,slotselect
-/dev/block/by-name/vbmeta_system /vbmeta_system emmc defaults first_stage_mount,nofail,slotselect,avb=vbmeta
-
-/dev/block/by-name/expdb /expdb emmc defaults defaults
-/dev/block/by-name/seccfg /seccfg emmc defaults defaults
-
-/dev/block/by-name/boot_para /boot_para emmc defaults defaults
-
-/dev/block/by-name/otp /otp emmc defaults defaults
-
-/dev/block/by-name/vbmeta /vbmeta emmc defaults defaults

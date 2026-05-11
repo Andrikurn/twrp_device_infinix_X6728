@@ -4,19 +4,23 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# Inherit from those products. Most specific first.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
+# Configure base.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/base.mk)
 
-# Installs gsi keys into ramdisk, to boot a developer GSI with verified boot.
-$(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
+# Configure core_64_bit_only.mk
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 
-# Enable project quotas and casefolding for emulated storage without sdcardfs
+# Configure emulated_storage.mk
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
-# Enable Virtual A/B OTA
+# Configure virtual A/B
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/compression.mk)
+
+# Shipping API level
+BOARD_SHIPPING_API_LEVEL    := 35
+PRODUCT_SHIPPING_API_LEVEL  := 35
+PRODUCT_TARGET_VNDK_VERSION := 35
 
 ENABLE_VIRTUAL_AB := true
 AB_OTA_UPDATER := true
@@ -76,6 +80,10 @@ PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.0-impl-mock \
 	android.hardware.fastboot@1.0-impl-mock.recovery \
     fastbootd
+
+# Kernel
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
+PRODUCT_ENABLE_UFFD_GC := true
 
 # Health Hal
 PRODUCT_PACKAGES += \
