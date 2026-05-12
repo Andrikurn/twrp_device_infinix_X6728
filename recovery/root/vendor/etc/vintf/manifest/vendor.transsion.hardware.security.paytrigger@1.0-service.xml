@@ -1,0 +1,10 @@
+<!--
+    Input:
+        vendor/transsion/vnd_security/paytrigger/aidl/default/vendor.transsion.hardware.security.paytrigger@1.0-service.xml
+-->
+<manifest version="8.0" type="device">
+    <hal format="aidl">
+        <name>vendor.transsion.hardware.security.paytrigger</name>
+        <fqname>IPayTrigger/default</fqname>
+    </hal>
+</manifest>

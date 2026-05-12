@@ -6,6 +6,7 @@ on init
     setprop sys.usb.ffs.aio_compat 1
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
 	symlink /system/etc/recovery.fstab /etc/recovery.fstab
+	setprop crypto.ready 1
 	start boot-hal-1-2
 	
 on fs
@@ -40,6 +41,43 @@ service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
     disabled
     oneshot
     seclabel u:r:recovery:s0
+
+service vendor.gatekeeper-default /vendor/bin/hw/android.hardware.gatekeeper-service.trustonic
+	class early_hal
+    interface android.hardware.gatekeeper@1.0::IGatekeeper default
+    user root
+    group root
+    seclabel u:r:recovery:s0
+
+service paytrigger_hal_service /vendor/bin/hw/vendor.transsion.hardware.security.paytrigger@1.0-service
+	class hal
+	user root
+	group root
+	seclabel u:r:recovery:s0
+	
+service vendor.keymint-trustonic /vendor/bin/hw/android.hardware.security.keymint@3.0-service.trustonic
+    class early_hal
+    user root
+	group root
+    seclabel u:r:recovery:s0
+
+service tee-service /vendor/bin/hw/vendor.trustonic.tee-service
+	class hal
+    interface aidl aidl/vendor.trustonic.teeservice.ITeeService
+    interface aidl aidl/vendor.trustonic.tee.ITee/default
+    interface aidl aidl/vendor.trustonic.tui.ITui/default
+    user root
+    group root
+	seclabel u:r:recovery:s0
+	
+on property:ro.crypto.state=encrypted && property:ro.boot.dynamic_partitions=true
+    start mobicore
+
+on property:ro.vendor.trustonic.ready=true
+    start vendor.gatekeeper-default
+    start vendor.keymint-trustonic
+	start paytrigger_hal_service
+	start tee-service
 	
 on property:servicemanager.ready=true
     setprop sys.boot_completed 1
