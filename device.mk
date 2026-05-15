@@ -60,12 +60,15 @@ AB_OTA_POSTINSTALL_CONFIG += \
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
-    cppreopts.sh \
+    cppreopts.sh
 
 PRODUCT_PROPERTY_OVERRIDES += ro.twrp.vendor_boot=true
 
 # Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+PRODUCT_PACKAGES += \
+	android.hardware.common-V2-ndk
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
@@ -89,6 +92,24 @@ PRODUCT_ENABLE_UFFD_GC := true
 PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
     android.hardware.health@2.1-service
+
+# Security
+PRODUCT_PACKAGES += \
+	android.hardware.security.rkp-V3-ndk \
+	android.hardware.security.secureclock-V1-ndk \
+	android.hardware.security.sharedsecret-V1-ndk
+
+# Gatekeeper
+PRODUCT_PACKAGES += \
+	android.hardware.gatekeeper-V1-ndk
+
+# Keymint
+PRODUCT_PACKAGES += \
+    android.hardware.security.keymint-V3-ndk
+
+# Keystore2
+PRODUCT_PACKAGES += \
+    android.system.keystore2
 
 # MTK plpath utils
 PRODUCT_PACKAGES += \
