@@ -32,4 +32,6 @@ tr_theme			/tr_theme		auto		ro																	wait,slotselect,logical,nofail
 
 # Use tranfs as cache
 /dev/block/by-name/tranfs	/cache			ext4		noatime,nosuid,nodev,discard														wait,check,formattable
-/dev/block/by-name/tranfs	/tranfs			ext4		noatime,nosuid,nodev,discard														wait,check,formattable
+
+# Use persist to save TWRP settings
+/dev/block/by-name/persist	/persist		ext4		noatime,nosuid,nodev																wait,check
