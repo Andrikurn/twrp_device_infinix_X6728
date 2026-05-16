@@ -14,11 +14,10 @@ on fs
 	write /proc/bootprof "INIT:fs"
 	install_keyring
     start adbd
-	
-on post-fs-data
-	start health-hal-2-1
 
 on post-fs
+	start vendor.health-default
+	
     # Support A/B feature for EMMC and UFS boot region
     symlink /dev/block/sda /dev/block/mmcblk0boot0
     symlink /dev/block/sdb /dev/block/mmcblk0boot1

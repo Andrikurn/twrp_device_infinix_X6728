@@ -67,9 +67,6 @@ PRODUCT_PROPERTY_OVERRIDES += ro.twrp.vendor_boot=true
 # Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-PRODUCT_PACKAGES += \
-	android.hardware.common-V2-ndk
-
 # Boot control HAL
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.2-mtkimpl \
@@ -90,8 +87,8 @@ PRODUCT_ENABLE_UFFD_GC := true
 
 # Health Hal
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-service
+    android.hardware.health-service.example \
+    android.hardware.health-service.example_recovery \
 
 # Security
 PRODUCT_PACKAGES += \
