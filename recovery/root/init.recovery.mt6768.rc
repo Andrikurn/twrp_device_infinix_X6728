@@ -2,10 +2,6 @@ import /init.cgroup.rc
 import /init.tee.rc
 
 on init
-	# Move the manifest for health HAL to vendor instead
-	copy /system/etc/vintf/manifest/android.hardware.health-service.example.xml /vendor/etc/vintf/manifest/android.hardware.health-service.example.xml
-    exec -- /system/bin/rm /system/etc/vintf/manifest/android.hardware.health-service.example.xml
-	
 	setprop sys.usb.configfs 1
 	setprop sys.usb.controller "musb-hdrc"
     setprop sys.usb.ffs.aio_compat 1
@@ -20,10 +16,6 @@ on fs
     start adbd
 
 on post-fs
-	start vendor.health-default
-	# Manual fix for battery percentage
-	start vendor.charger
-	
     # Support A/B feature for EMMC and UFS boot region
     symlink /dev/block/sda /dev/block/mmcblk0boot0
     symlink /dev/block/sdb /dev/block/mmcblk0boot1
@@ -40,6 +32,10 @@ on post-fs
     exec u:r:update_engine:s0 root root -- /system/bin/mtk_plpath_utils
     start mtk.plpath.utils.link
 
+on post-fs-data
+	start vendor.health-default
+	start vendor.charger
+
 service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
     class main
     user root
@@ -47,8 +43,8 @@ service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
     disabled
     oneshot
     seclabel u:r:recovery:s0
-	
-service vendor.charger /vendor/bin/hw/android.hardware.health-service.example_recovery --charger
+
+service vendor.charger /system/bin/hw/android.hardware.health-service.example_recovery --charger
     class charger
     seclabel u:r:charger_vendor:s0
     user system
