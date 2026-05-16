@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BP_FILE="platform/hardware/interfaces/health/aidl/default/Android.bp"
+BP_FILE="hardware/interfaces/health/aidl/default/Android.bp"
 
 # Verify the file exists before attempting to patch it
 if [ ! -f "$BP_FILE" ]; then
