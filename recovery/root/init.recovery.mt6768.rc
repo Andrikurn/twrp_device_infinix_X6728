@@ -2,7 +2,11 @@ import /init.cgroup.rc
 import /init.tee.rc
 
 on init
-    setprop sys.usb.configfs 1
+	# Move the manifest for health HAL to vendor instead
+	copy /system/etc/vintf/manifest/android.hardware.health-service.example.xml /vendor/etc/vintf/manifest/android.hardware.health-service.example.xml
+    exec -- /system/bin/rm /system/etc/vintf/manifest/android.hardware.health-service.example.xml
+	
+	setprop sys.usb.configfs 1
 	setprop sys.usb.controller "musb-hdrc"
     setprop sys.usb.ffs.aio_compat 1
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
@@ -17,6 +21,8 @@ on fs
 
 on post-fs
 	start vendor.health-default
+	# Manual fix for battery percentage
+	start vendor.charger
 	
     # Support A/B feature for EMMC and UFS boot region
     symlink /dev/block/sda /dev/block/mmcblk0boot0
@@ -41,6 +47,17 @@ service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
     disabled
     oneshot
     seclabel u:r:recovery:s0
+	
+service vendor.charger /vendor/bin/hw/android.hardware.health-service.example_recovery --charger
+    class charger
+    seclabel u:r:charger_vendor:s0
+    user system
+    group system wakelock input
+    capabilities SYS_BOOT
+    file /dev/kmsg w
+    file /sys/fs/pstore/console-ramoops-0 r
+    file /sys/fs/pstore/console-ramoops r
+    file /proc/last_kmsg r
 
 service vendor.gatekeeper-default /vendor/bin/hw/android.hardware.gatekeeper-service.trustonic
 	class early_hal
