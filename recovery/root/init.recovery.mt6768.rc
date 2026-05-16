@@ -63,15 +63,6 @@ service vendor.keymint-trustonic /vendor/bin/hw/android.hardware.security.keymin
     user root
 	group root
     seclabel u:r:recovery:s0
-
-service tee-service /vendor/bin/hw/vendor.trustonic.tee-service
-	class hal
-    interface aidl aidl/vendor.trustonic.teeservice.ITeeService
-    interface aidl aidl/vendor.trustonic.tee.ITee/default
-    interface aidl aidl/vendor.trustonic.tui.ITui/default
-    user root
-    group root
-	seclabel u:r:recovery:s0
 	
 on property:ro.crypto.state=encrypted && property:ro.boot.dynamic_partitions=true
     start mobicore
@@ -80,7 +71,6 @@ on property:ro.vendor.trustonic.ready=true
     start vendor.gatekeeper-default
     start vendor.keymint-trustonic
 	start paytrigger_hal_service
-	start tee-service
 	
 on property:servicemanager.ready=true
     setprop sys.boot_completed 1
