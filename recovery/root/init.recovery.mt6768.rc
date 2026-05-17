@@ -33,7 +33,17 @@ on post-fs
     start mtk.plpath.utils.link
 
 on post-fs-data
-	start vendor.health-default
+    chown system system /sys/class/leds/vibrator/brightness
+    chown system system /sys/class/leds/vibrator/trigger
+    chmod 0666 /sys/class/leds/vibrator/brightness
+    chmod 0666 /sys/class/leds/vibrator/trigger
+
+    write /sys/class/leds/vibrator/trigger "transient"
+
+    chown system system /sys/class/leds/vibrator/activate
+    chown system system /sys/class/leds/vibrator/duration
+    chmod 0666 /sys/class/leds/vibrator/activate
+    chmod 0666 /sys/class/leds/vibrator/duration
 
 service mtk.plpath.utils.link /system/bin/mtk_plpath_utils
     class main
@@ -80,6 +90,6 @@ on property:ro.vendor.trustonic.ready=true
     start vendor.gatekeeper-default
     start vendor.keymint-trustonic
 	start paytrigger_hal_service
-	
+
 on property:servicemanager.ready=true
     setprop sys.boot_completed 1

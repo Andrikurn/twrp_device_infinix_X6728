@@ -88,7 +88,7 @@ PRODUCT_ENABLE_UFFD_GC := true
 # Health Hal
 PRODUCT_PACKAGES += \
     android.hardware.health-service.example \
-    android.hardware.health-service.example_recovery \
+    android.hardware.health-service.example_recovery
 
 # Security
 PRODUCT_PACKAGES += \
