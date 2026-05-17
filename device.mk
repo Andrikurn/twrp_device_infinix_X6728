@@ -88,7 +88,11 @@ PRODUCT_ENABLE_UFFD_GC := true
 # Health Hal
 PRODUCT_PACKAGES += \
     android.hardware.health-service.example \
-    android.hardware.health-service.example_recovery \
+    android.hardware.health-service.example_recovery
+
+# Vibration
+PRODUCT_PACKAGES += \
+	android.hardware.vibrator-V2-ndk
 
 # Security
 PRODUCT_PACKAGES += \
