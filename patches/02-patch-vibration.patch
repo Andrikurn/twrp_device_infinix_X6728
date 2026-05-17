@@ -1,34 +1,25 @@
 --- a/bootable/recovery/minuitwrp/events.cpp
 +++ b/bootable/recovery/minuitwrp/events.cpp
-@@ -61,8 +61,10 @@
+@@ -61,8 +61,7 @@
  #define VIBRATOR_TIMEOUT_FILE	"/sys/class/timed_output/vibrator/enable"
  #define VIBRATOR_TIME_MS    50
  
 -#define LEDS_HAPTICS_DURATION_FILE	"/sys/class/leds/vibrator/duration"
 -#define LEDS_HAPTICS_ACTIVATE_FILE	"/sys/class/leds/vibrator/activate"
-+#define LEDS_HAPTICS_DURATION_FILE    "/sys/class/leds/vibrator/duration"
-+#define LEDS_HAPTICS_ACTIVATE_FILE    "/sys/class/leds/vibrator/activate"
 +#define LEDS_HAPTICS_BRIGHTNESS_FILE  "/sys/class/leds/vibrator/brightness"
-+#define LEDS_HAPTICS_TRIGGER_FILE     "/sys/class/leds/vibrator/trigger"
  
  #ifndef SYN_REPORT
  #define SYN_REPORT          0x00
-@@ -182,9 +184,18 @@
-         write_to_file(VIBRATOR_TIMEOUT_FILE, tout);
+@@ -183,8 +182,11 @@
      }
  #else
--    if (std::ifstream(LEDS_HAPTICS_ACTIVATE_FILE).good()) {
-+    if (std::ifstream(LEDS_HAPTICS_ACTIVATE_FILE).good() || std::ifstream(LEDS_HAPTICS_TRIGGER_FILE).good()) {
-+        write_to_file(LEDS_HAPTICS_TRIGGER_FILE, "transient");
-+
-         write_to_file(LEDS_HAPTICS_DURATION_FILE, tout);
-+
+     if (std::ifstream(LEDS_HAPTICS_ACTIVATE_FILE).good()) {
+-        write_to_file(LEDS_HAPTICS_DURATION_FILE, tout);
+-        write_to_file(LEDS_HAPTICS_ACTIVATE_FILE, "1");
 +        write_to_file(LEDS_HAPTICS_BRIGHTNESS_FILE, "255");
-         write_to_file(LEDS_HAPTICS_ACTIVATE_FILE, "1");
 +        
 +        usleep(timeout_ms * 1000);
 +      
-+        write_to_file(LEDS_HAPTICS_ACTIVATE_FILE, "0");
 +        write_to_file(LEDS_HAPTICS_BRIGHTNESS_FILE, "0"); 
      } else
          write_to_file(VIBRATOR_TIMEOUT_FILE, tout);
