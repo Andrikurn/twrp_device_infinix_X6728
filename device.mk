@@ -90,10 +90,6 @@ PRODUCT_PACKAGES += \
     android.hardware.health-service.example \
     android.hardware.health-service.example_recovery
 
-# Vibration
-PRODUCT_PACKAGES += \
-	android.hardware.vibrator-V2-ndk
-
 # Security
 PRODUCT_PACKAGES += \
 	android.hardware.security.rkp-V3-ndk \
