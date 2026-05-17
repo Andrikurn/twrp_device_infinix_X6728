@@ -10,12 +10,14 @@
  
  #ifndef SYN_REPORT
  #define SYN_REPORT          0x00
-@@ -183,8 +182,11 @@
+@@ -182,9 +181,12 @@
+         write_to_file(VIBRATOR_TIMEOUT_FILE, tout);
      }
  #else
-     if (std::ifstream(LEDS_HAPTICS_ACTIVATE_FILE).good()) {
+-    if (std::ifstream(LEDS_HAPTICS_ACTIVATE_FILE).good()) {
 -        write_to_file(LEDS_HAPTICS_DURATION_FILE, tout);
 -        write_to_file(LEDS_HAPTICS_ACTIVATE_FILE, "1");
++    if (std::ifstream(LEDS_HAPTICS_BRIGHTNESS_FILE).good()) {
 +        write_to_file(LEDS_HAPTICS_BRIGHTNESS_FILE, "255");
 +        
 +        usleep(timeout_ms * 1000);
