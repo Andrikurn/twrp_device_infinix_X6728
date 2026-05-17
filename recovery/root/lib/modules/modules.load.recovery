@@ -62,6 +62,7 @@ emiisu.ko
 emictrl.ko
 emi-dummy.ko
 8250_mtk.ko
+regulator-vibrator.ko
 rtc-mt6397.ko
 phy-generic.ko
 phy-mtk-tphy.ko
