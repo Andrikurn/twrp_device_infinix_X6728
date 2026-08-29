@@ -35,12 +35,12 @@
 /tee			emmc		/dev/block/by-name/tee											flags=display=tee;slotselect
 
 # Removable Storage
-/external_sd	auto		/dev/block/mmcblk1p1				/dev/block/mmcblk0p1					flags=display="Micro SD Card";storage;wipeingui;removable;backup=0
+/external_sd	auto		/dev/block/mmcblk1p1				/dev/block/mmcblk1						flags=display="Micro SD Card";storage;wipeingui;removable;backup=0
 /usb_otg		auto		/dev/block/sda1					/dev/block/sda		/dev/block/sdd1			flags=display="USB-OTG";storage;wipeingui;removable;backup=0
 
 # Flashable logical partitions
-/system_image	    emmc		/dev/block/mapper/system							flags=backup=0;flashimg;display="System Image"
-/system_ext_image	emmc		/dev/block/mapper/system_ext							flags=backup=0;flashimg;display="System_Ext Image"
-/vendor_image	    emmc		/dev/block/mapper/vendor							flags=backup=0;flashimg;display="Vendor Image"
-/product_image	  	emmc		/dev/block/mapper/product							flags=backup=0;flashimg;display="Product Image"
-/vendor_dlkm_image	emmc		/dev/block/bootdevice/by-name/vendor_dlkm						flags=display="VendorDLKM Image";backup;flashimg
+/system_image	    emmc		/dev/block/mapper/system								flags=slotselect;logical;backup=0;flashimg;display="System Image"
+/system_ext_image	emmc		/dev/block/mapper/system_ext							flags=slotselect;logical;backup=0;flashimg;display="System_EXT Image"
+/vendor_image	    emmc		/dev/block/mapper/vendor								flags=slotselect;logical;backup=0;flashimg;display="Vendor Image"
+/product_image	  	emmc		/dev/block/mapper/product								flags=slotselect;logical;backup=0;flashimg;display="Product Image"
+/vendor_dlkm_image	emmc		/dev/block/mapper/vendor_dlkm							flags=slotselect;logical;backup;flashimg;display="VendorDLKM Image"
