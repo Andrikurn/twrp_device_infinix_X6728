@@ -6,7 +6,7 @@ on init
 	setprop sys.usb.controller "musb-hdrc"
     setprop sys.usb.ffs.aio_compat 1
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
-	symlink /system/etc/recovery.fstab /etc/recovery.fstab
+	symlink /system/etc/ /etc/
 	setprop crypto.ready 1
 	start boot-hal-1-2
 	

@@ -26,15 +26,15 @@ Camera                  | 50 MP (wide); 8 MP (front, wide)
 Works:
 
 - [X] ADB
-- [X] Decryption
+- [ ] Decryption (somehow back to being broken)
 - [X] Display
 - [X] Fasbootd
-- [X] Flashing (zip & super only for now)
+- [X] Flashing
 - [X] MTP
 - [X] Sideload
-- [X] USB OTG
+- [X] USB OTG (need to plug before TWRP starts)
 - [X] Vibrator
-- [ ] MicroSD
+- [X] MicroSD
 
 ## Building
 
