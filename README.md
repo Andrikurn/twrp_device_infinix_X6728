@@ -26,7 +26,7 @@ Camera                  | 50 MP (wide); 8 MP (front, wide)
 Works:
 
 - [X] ADB
-- [ ] Decryption (somehow back to being broken)
+- [ ] Decryption (disabled for now)
 - [X] Display
 - [X] Fasbootd
 - [X] Flashing
@@ -38,17 +38,17 @@ Works:
 
 ## Building
 
-Clone and sync twrp-16.0 manifest : 
+Clone and sync twrp-12.1 manifest : 
 
 ```
-repo init -u https://github.com/TWRP-Test/platform_manifest_twrp_aosp.git -b twrp-16.0
+repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
 repo sync
 ```
 
 Clone device tree :
 
 ```
-git clone https://github.com/Andrikurn/twrp_device_infinix_X6728.git -b twrp-16.0 device/infinix/X6728
+git clone https://github.com/Andrikurn/twrp_device_infinix_X6728.git -b dev-12.1 device/infinix/X6728
 ```
 
 Build :
@@ -56,5 +56,5 @@ Build :
 ```
 export ALLOW_MISSING_DEPENDENCIES=true
 source build/envsetup.sh
-lunch twrp_X6728 && make clean && make vendorbootimage -j$(nproc --all)
+lunch twrp_X6728-eng && mka clean && mka vendorbootimage -j$(nproc --all)
 ```

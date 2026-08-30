@@ -21,31 +21,26 @@
 
 device_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 workspace_root="$(cd "${device_dir}/../../.." && pwd)"
-health_patch_file="${device_dir}/patches/01-patch-health-hal.patch"
-vibration_patch_file="${device_dir}/patches/02-patch-vibration.patch"
+vibration_patch_file="${device_dir}/patches/01-patch-vibration.patch"
 
-if [[ ! -f "${health_patch_file}" ]]; then
-    echo "[X6728] Missing patch: ${health_patch_file}"
-elif [[ ! -f "${vibration_patch_file}" ]]; then
+if [[ ! -f "${vibration_patch_file}" ]]; then
     echo "[X6728] Missing patch: ${vibration_patch_file}"
 elif ! command -v patch >/dev/null 2>&1; then
     echo "[X6728] Missing required command: patch"
 elif (
     cd "${workspace_root}" &&
-    patch -p1 -N --dry-run --silent < "${health_patch_file}" >/dev/null 2>&1
 	patch -p1 -N --dry-run --silent < "${vibration_patch_file}" >/dev/null 2>&1
 ); then
     if (
         cd "${workspace_root}" &&
-        patch -p1 -N --silent < "${health_patch_file}" >/dev/null 2>&1
 		patch -p1 -N --silent < "${vibration_patch_file}" >/dev/null 2>&1
     ); then
-        echo "[X6728] Applied patches."
+        echo "[X6728] Applied patch."
     else
-        echo "[X6728] Failed to apply patches."
+        echo "[X6728] Failed to apply patch."
     fi
 else
-    echo "[X6728] Patches already applied or not applicable"
+    echo "[X6728] Patch already applied or not applicable"
 fi
 
 unset device_dir workspace_root patch_file
