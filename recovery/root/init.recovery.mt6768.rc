@@ -1,5 +1,5 @@
 import /init.cgroup.rc
-# import /init.tee.rc
+import /init.tee.rc
 
 on init
 	setprop sys.usb.configfs 1
@@ -7,7 +7,7 @@ on init
     setprop sys.usb.ffs.aio_compat 1
     export LD_LIBRARY_PATH /system/lib64:/vendor/lib64:/vendor/lib64/hw
 	symlink /system/etc/ /etc/
-#	setprop crypto.ready 1
+	setprop crypto.ready 1
 	start boot-hal-1-2
 	
 on fs
@@ -61,13 +61,13 @@ service vendor.keymint-trustonic /vendor/bin/hw/android.hardware.security.keymin
 	group root
     seclabel u:r:recovery:s0
 	
-# on property:ro.crypto.state=encrypted && property:ro.boot.dynamic_partitions=true
-#     start mobicore
+on property:ro.crypto.state=encrypted && property:ro.boot.dynamic_partitions=true
+	start mobicore
 
-# on property:ro.vendor.trustonic.ready=true
-#     start vendor.gatekeeper-default
-#     start vendor.keymint-trustonic
-#     start paytrigger_hal_service
+on property:ro.vendor.trustonic.ready=true
+    start vendor.gatekeeper-default
+    start vendor.keymint-trustonic
+    start paytrigger_hal_service
 
 on property:servicemanager.ready=true
     setprop sys.boot_completed 1
