@@ -1,0 +1,12 @@
+cc_library_shared {
+    name: "libverbose_abort_shim",
+    vendor: true,
+    srcs: ["verbose_abort_shim.cpp"],
+    shared_libs: ["liblog"],
+    stl: "c++_static",
+    cflags: [
+        "-Wall",
+        "-Wextra",
+    ],
+    compile_multilib: "both",
+}

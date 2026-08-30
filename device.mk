@@ -92,10 +92,6 @@ PRODUCT_PACKAGES += \
     android.hardware.health@2.1-impl \
     android.hardware.health@2.1-service
 
-# Keymaster
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@4.1
-
 # Security
 PRODUCT_PACKAGES += \
     android.hardware.security.keymint \
@@ -110,6 +106,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     mtk_plpath_utils \
     mtk_plpath_utils.recovery
+
+# libcpp's verbose_abort shim
+PRODUCT_PACKAGES += \
+    libverbose_abort_shim
 
 # Update engine
 PRODUCT_PACKAGES += \
