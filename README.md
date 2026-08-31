@@ -23,16 +23,14 @@ Camera                  | 50 MP (wide); 8 MP (front, wide)
 
 ## Features
 
-Works:
-
 - [X] ADB
-- [ ] Decryption (disabled for now)
+- [ ] Decryption (almost works)
 - [X] Display
 - [X] Fasbootd
 - [X] Flashing
 - [X] MTP
 - [X] Sideload
-- [X] USB OTG (need to plug before TWRP starts)
+- [X] USB OTG
 - [X] Vibrator
 - [X] MicroSD
 

@@ -60,14 +60,17 @@ PRODUCT_PACKAGES += \
     otapreopt_script \
     cppreopts.sh
 
-PRODUCT_PROPERTY_OVERRIDES += ro.twrp.vendor_boot=true
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.twrp.vendor_boot=true \
+    ro.board.api_level=32
 
 # Dynamic Partitions
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
 # API
-PRODUCT_SHIPPING_API_LEVEL := 31
-PRODUCT_TARGET_VNDK_VERSION := 31
+PRODUCT_SHIPPING_API_LEVEL := 32
+PRODUCT_TARGET_VNDK_VERSION := 32
+BOARD_SHIPPING_API_LEVEL := 30
 
 # Boot control HAL
 PRODUCT_PACKAGES += \
