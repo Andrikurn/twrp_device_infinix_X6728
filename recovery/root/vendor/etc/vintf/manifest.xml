@@ -27,7 +27,7 @@
         device/mediatek/vendor/common/manifest_target_level.xml
         device/mediatek/vendor/common/manifest.xml
 -->
-<manifest version="8.0" type="device" target-level="202404">
+<manifest version="4.0" type="device" target-level="6">
     <hal format="aidl">
         <name>android.hardware.camera.provider</name>
         <version>3</version>
@@ -260,6 +260,7 @@
         <fqname>ITui/default</fqname>
     </hal>
     <sepolicy>
-        <version>202404</version>
+        <version>31.0</version>
     </sepolicy>
+	<kernel target-level="6"/>
 </manifest>
