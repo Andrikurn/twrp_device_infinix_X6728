@@ -2,14 +2,9 @@
     Input:
         vendor/mediatek/proprietary/trustzone/trustonic/source/external/gatekeeper/common/aidl/android.hardware.gatekeeper-service.trustonic.xml
 -->
-<manifest version="4.0" type="device">
+<manifest version="8.0" type="device">
     <hal format="aidl">
         <name>android.hardware.gatekeeper</name>
         <fqname>IGatekeeper/default</fqname>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.gatekeeper</name>
-        <transport>hwbinder</transport>
-        <fqname>@1.0::IGatekeeper/default</fqname>
     </hal>
 </manifest>

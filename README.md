@@ -1,4 +1,4 @@
-## TWRP device tree for Infinix HOT 60i (_X6728_)
+## OrangeFox device tree for Infinix HOT 60i (_X6728_)
 
 ## Device picture
 
@@ -36,23 +36,6 @@ Camera                  | 50 MP (wide); 8 MP (front, wide)
 
 ## Building
 
-Clone and sync twrp-12.1 manifest : 
-
-```
-repo init -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-12.1
-repo sync
-```
-
-Clone device tree :
-
-```
-git clone https://github.com/Andrikurn/twrp_device_infinix_X6728.git -b dev-12.1 device/infinix/X6728
-```
-
-Build :
-
-```
-export ALLOW_MISSING_DEPENDENCIES=true
-source build/envsetup.sh
-lunch twrp_X6728-eng && mka clean && mka vendorbootimage -j$(nproc --all)
-```
+'''
+TODO: write build instructions.
+'''

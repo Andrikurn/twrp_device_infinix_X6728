@@ -4,7 +4,7 @@
         out/soong/.intermediates/kernel/configs/u/android-5.15/kernel_config_u_5.15/matrix_kernel_config_u_5.15.xml
         out/soong/.intermediates/kernel/configs/u/android-6.1/kernel_config_u_6.1/matrix_kernel_config_u_6.1.xml
 -->
-<compatibility-matrix version="4.0" type="framework" level="8">
+<compatibility-matrix version="8.0" type="framework" level="8">
     <hal format="hidl" optional="true">
         <name>android.hardware.audio</name>
         <version>6.0</version>

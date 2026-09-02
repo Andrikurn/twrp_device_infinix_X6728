@@ -5,9 +5,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/twrp_X6728.mk
-	
-COMMON_LUNCH_CHOICES := \
-	twrp_X6728-eng \
-	twrp_X6728-userdebug \
-	twrp_X6728-user
+    $(LOCAL_DIR)/fox_X6728.mk

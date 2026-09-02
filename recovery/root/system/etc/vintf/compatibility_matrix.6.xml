@@ -5,7 +5,7 @@
         out/soong/.intermediates/kernel/configs/s/android-5.4/kernel_config_s_5.4/matrix_kernel_config_s_5.4.xml
         out/soong/.intermediates/kernel/configs/s/android-5.10/kernel_config_s_5.10/matrix_kernel_config_s_5.10.xml
 -->
-<compatibility-matrix version="4.0" type="framework" level="6">
+<compatibility-matrix version="8.0" type="framework" level="6">
     <hal format="hidl" optional="true">
         <name>android.hardware.atrace</name>
         <version>1.0</version>
