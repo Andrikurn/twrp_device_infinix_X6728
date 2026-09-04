@@ -10,7 +10,10 @@ $(call inherit-product, device/infinix/X6728/device.mk)
 # Inherit some common TWRP stuff.
 $(call inherit-product, vendor/twrp/config/common.mk)
 
-# Include Fox props
+# Include TWRP props.
+$(call inherit-product, device/infinix/X6728/twrp.mk)
+
+# Include Fox props.
 $(call inherit-product, device/infinix/X6728/fox.mk)
 
 # Product Specifics
